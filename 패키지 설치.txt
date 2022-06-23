@@ -1,0 +1,19 @@
+프로젝트에서 설치한 리엑트 라이브러리 목록
+
+yarn add react-router-dom   :: 라우팅 설정 패키지
+
+yarn add react-icons --save     :: 리액트 아이콘 패키지
+
+yarn add redux react-redux ::  리덕스 패키지
+
+yarn add redux-thunk :: 리덕스 청크  (미들웨어)
+
+yarn add axios  :: axios 패키지 설치 
+
+yarn add i swiper   :: swiper 패키지
+
+yarn add react-modal :: react 모달
+
+yarn add firebase :: 파이어베이스
+
+yarn add react-thunk :: 리엑트 청크 

@@ -4,6 +4,7 @@ import { BsChevronLeft } from "react-icons/bs";
 import {useNavigate} from "react-router-dom"
 
 const Signup = () => {
+    // Hook 선언
     let navigate = useNavigate()
 
 
@@ -14,6 +15,7 @@ const Signup = () => {
     const nick_ref = React.useRef(null)
 
 
+    // 회원가입 시 사용될 함수
     const SignupAxios = () =>{
 
         // 회원가입 데이터
@@ -27,22 +29,20 @@ const Signup = () => {
         axios.post('http://54.180.100.13/api/user/signup',SignupData)
         .then((res)=>{
             alert(res.data.message)
+            navigate('/Login')
         })
         .catch((err)=>{
             alert(err.response.data.errorMessage)
         })
-
-        navigate('/Login')
-
     }
 
 
 
 
-
+        // 회원가입 화면 뷰
     return(
 
- 
+        
 
         <div className="Login_wrap">
              <div id="Login_container">

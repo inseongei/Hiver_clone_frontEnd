@@ -1,25 +1,20 @@
 import React from "react";
 import axios from 'axios';
-import { useParams } from "react-router-dom";
 
 
-
-
-
-
-
+// props : Basket 컴포넌트에 자식 컴포넌트로 넘겨준 데이터 값 ( Basket의 53번째 줄 )
 const BasketList = (props) =>{
 
-    console.log(props)
-
+    // 로컬스토리지에 있는 저장된 login-token을 token 변수에 선언
     const token = localStorage.getItem("login-token");
 
-    const BasketDel = () =>{
-   
+
+    // 버튼 onclick 시 사용되는 삭제 함수 ( with axios.delete )
+    const BasketDel = () =>{  
         axios.delete('http://54.180.100.13/api' + '/cart/' + props.cartid + '/delete',{
-          headers: { Authorization: "Bearer " + `${token}` }
+        headers: { Authorization: "Bearer " + `${token}` }
       })
-        .then((res)=>{
+       .then((res)=>{
           console.log(res)
           alert('삭제성공')
           window.location.reload()
@@ -38,7 +33,7 @@ const BasketList = (props) =>{
 
 
 
-
+    // BasketList의 화면 뷰 (장바구니안에 있는 상품의 뷰)
     return(
         <div>
         <div className='Basket_first_box'>

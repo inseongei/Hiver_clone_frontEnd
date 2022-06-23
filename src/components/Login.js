@@ -4,18 +4,20 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom"
 
 const Login = () =>{
+    // Hook 사용 선언
     let navigate = useNavigate()
+    
+    // 아이디 비밀번호 Ref로 요소 잡음
     const id_ref = React.useRef(null)
     const pw_ref = React.useRef(null)
 
 
+
+    // 로그인을 실행하는 함수
     const LoginAxios = () =>{
 
-        // 로그인 데이터 Ref
-        const LoginData ={
-            useremail:id_ref.current.value,
-            password: pw_ref.current.value       
-        }
+        // 아이디와 비밀번호의 로그인데이터 
+        const LoginData ={useremail:id_ref.current.value , password: pw_ref.current.value}
 
         axios.post('http://54.180.100.13/api/user/signin',LoginData)
         .then((res)=>{
@@ -31,7 +33,7 @@ const Login = () =>{
     }
 
 
-
+    // 로그인 화면 뷰 
     return(
         <div>
             <div className="Login_wrap">

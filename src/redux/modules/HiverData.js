@@ -17,7 +17,7 @@ export function GetCard(CardData){
 }
 
 
-// middleware --> 미들웨어 /  Payload ???????
+// middleware --> 미들웨어 /  
 export const GetCardAxios = () =>{
     return function (dispatch){
         axios.get('http://54.180.100.13/api/')

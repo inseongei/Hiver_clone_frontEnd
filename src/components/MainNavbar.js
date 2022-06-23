@@ -6,9 +6,14 @@ import loupe from "./images/loupe.png";
 import { useNavigate } from "react-router-dom";
 
 const MainNavbar = () => {
+  // Hook 선언
   let navigate = useNavigate();
+
+  // 로그인 체크하기 위해 로컬스토리지의 토큰을 LoginCheck에 선언
   const LoginCheck = localStorage.getItem('login-token');  
 
+
+  // 로그아웃시 사용될 함수 ( 로그인토큰, 유저이메일 , 유저 닉네임을 로그아웃시 로컬스토리지에서 제거)
   const Logout = ()=>{
     localStorage.removeItem('login-token')
     localStorage.removeItem('user-name')
@@ -19,7 +24,7 @@ const MainNavbar = () => {
 
 
 
-
+  // 메인 Navbar 화면 뷰 ( 삼항연산자 사용 로컬 스토리지의 토큰 유무를 판단하여 로그인 여부를 확인 )
   return (
     <>
     {! LoginCheck ?   

@@ -7,11 +7,15 @@ import MainNavbar from './MainNavbar';
 
 export const Basket = () => {
 
+    // Get으로 받아온 데이터 State로 관리 (Basket)
     const [Basket,setBasket] = React.useState([])
 
+    // 로컬스토리지에 있는 저장된 login-token을 token 변수에 선언
+    const token = localStorage.getItem("login-token");
 
+
+    // 페이지 로드될 때 서버 데이터 불러오기
     React.useEffect(()=>{
-        const token = localStorage.getItem("login-token");
         axios.get('http://54.180.100.13/api/cart',{
             headers: { Authorization: "Bearer " + `${token}` }
         })
@@ -22,15 +26,7 @@ export const Basket = () => {
     },[])
 
 
-console.log(Basket)
-
-
-
-
-
-
-
-
+// Basket 화면 뷰
  return(
     <>
     <MainEventAd/>
@@ -52,9 +48,8 @@ console.log(Basket)
                 <div className='Basket_third'>상품금액</div>
             </div>
 
-
+        
         {Basket.map((Basket,idx) =>(
-
         <BasketList
             key={idx}
             boardid={Basket.boardid}
