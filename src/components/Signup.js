@@ -1,9 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { BsChevronLeft } from "react-icons/bs";
+import {useNavigate} from "react-router-dom"
 
 const Signup = () => {
-
+    let navigate = useNavigate()
 
 
     // 회원가입 4개 input ref로 요소잡음
@@ -30,6 +31,9 @@ const Signup = () => {
         .catch((err)=>{
             alert(err.response.data.errorMessage)
         })
+
+        navigate('/Login')
+
     }
 
 

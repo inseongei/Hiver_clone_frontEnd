@@ -5,8 +5,20 @@ import { useParams } from "react-router-dom";
 const Comment =(props)=>{
     console.log(props)
     let { boardid } = useParams();
-
+    const user = localStorage.getItem("user-nickname");
     const token = localStorage.getItem("login-token");
+
+
+    const deletebtn = () =>{
+      if(props.nickname != user){
+        alert('본인의 게시물이 아닙니다')
+      }else{
+        ReviewDel()
+      }
+    }
+
+
+
     const ReviewDel = () =>{
    
         axios.delete('http://54.180.100.13/api/board/' + boardid + '/review/' + props.reviewid,{
@@ -20,52 +32,88 @@ const Comment =(props)=>{
         .catch((err)=>{
           console.log(err)
         })
-       }
 
-
-
-
-
-
-
+       } 
 
 
             return(
-              <dl data-v-229d511e="" className="detail_review_default">
-              <dt data-v-229d511e="" className="review_profile">
-                <div><button onClick={ReviewDel}>삭제</button></div>
-                <span data-v-229d511e="" className="thumbss">
-                  <img
-                    data-v-229d511e=""
-                    src="https://image.brandi.me/user/2019/12/18/2549575945324389_1576621347_L.jpg"
-                    alt="77***** 프로필 이미지"
-                  />
-                </span>
-                <strong data-v-229d511e="">
-                  <div data-v-229d511e="" className="user_name">
-                    {props.nickname}
-                  </div>
-                  <span data-v-229d511e="" className="date">
-                  {props.date}
+              <>
+              {user === props.nickname ?   
+                <dl data-v-229d511e="" className="detail_review_default">
+                <dt data-v-229d511e="" className="review_profile">
+                  <div><button onClick={deletebtn}>삭제</button></div>
+                  <span data-v-229d511e="" className="thumbss">
+                    <img
+                      data-v-229d511e=""
+                      src="https://image.brandi.me/user/2019/12/18/2549575945324389_1576621347_L.jpg"
+                      alt="77***** 프로필 이미지"
+                    />
                   </span>
-                </strong>
-              </dt>
-              <dd data-v-229d511e="" className="review_info">
-                <span data-v-229d511e="" className="user userHeight">
-                {props.tall}
-                </span>
-              </dd>
-              <dd data-v-229d511e="" className="review_text">
-              {props.review}
-              </dd>
-              <dd data-v-229d511e="" className="review_thumb">
-                <span data-v-229d511e="" className="thumbs">
-                  <img
-                    src ={props.img} alt="이미지" className="iamimage"
-                  />
-                </span>
-              </dd>
-            </dl>
+                  <strong data-v-229d511e="">
+                    <div data-v-229d511e="" className="user_name">
+                      {props.nickname}
+                    </div>
+                    <span data-v-229d511e="" className="date">
+                    {props.date}
+                    </span>
+                  </strong>
+                </dt>
+                <dd data-v-229d511e="" className="review_info">
+                  <span data-v-229d511e="" className="user userHeight">
+                  {props.tall}
+                  </span>
+                </dd>
+                <dd data-v-229d511e="" className="review_text">
+                {props.review}
+                </dd>
+                <dd data-v-229d511e="" className="review_thumb">
+                  <span data-v-229d511e="" className="thumbs">
+                    <img
+                      src ={props.img} alt="이미지" className="iamimage"
+                    />
+                  </span>
+                </dd>
+              </dl>
+
+
+                :
+              
+                <dl data-v-229d511e="" className="detail_review_default">
+                <dt data-v-229d511e="" className="review_profile">
+                  <span data-v-229d511e="" className="thumbss">
+                    <img
+                      data-v-229d511e=""
+                      src="https://image.brandi.me/user/2019/12/18/2549575945324389_1576621347_L.jpg"
+                      alt="77***** 프로필 이미지"
+                    />
+                  </span>
+                  <strong data-v-229d511e="">
+                    <div data-v-229d511e="" className="user_name">
+                      {props.nickname}
+                    </div>
+                    <span data-v-229d511e="" className="date">
+                    {props.date}
+                    </span>
+                  </strong>
+                </dt>
+                <dd data-v-229d511e="" className="review_info">
+                  <span data-v-229d511e="" className="user userHeight">
+                  {props.tall}
+                  </span>
+                </dd>
+                <dd data-v-229d511e="" className="review_text">
+                {props.review}
+                </dd>
+                <dd data-v-229d511e="" className="review_thumb">
+                  <span data-v-229d511e="" className="thumbs">
+                    <img
+                      src ={props.img} alt="이미지" className="iamimage"
+                    />
+                  </span>
+                </dd>
+              </dl>            
+              }
+</>
             )
 }
 

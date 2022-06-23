@@ -7,9 +7,22 @@ import MainNavbar from './MainNavbar';
 
 export const Basket = () => {
 
+    const [Basket,setBasket] = React.useState([])
 
 
+    React.useEffect(()=>{
+        const token = localStorage.getItem("login-token");
+        axios.get('http://54.180.100.13/api/cart',{
+            headers: { Authorization: "Bearer " + `${token}` }
+        })
+        .then((res)=>{
+            console.log(res)
+            setBasket(res.data.cartList)
+        })
+    },[])
 
+
+console.log(Basket)
 
 
 
@@ -39,7 +52,27 @@ export const Basket = () => {
                 <div className='Basket_third'>상품금액</div>
             </div>
 
-           <BasketList/>
+
+        {Basket.map((Basket,idx) =>(
+
+        <BasketList
+            key={idx}
+            boardid={Basket.boardid}
+            cartid={Basket.cartid}
+            discountper={Basket.discountper}
+            enterprise={Basket.enterprise}
+            image1={Basket.image1}
+            nickname={Basket.nickname}
+            option={Basket.option}
+            price={Basket.price}
+            quantity={Basket.quantity}
+            title={Basket.title}
+        />
+        ))}
+          
+
+
+
 
         </div>
 

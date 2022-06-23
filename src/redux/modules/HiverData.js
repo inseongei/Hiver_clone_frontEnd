@@ -22,6 +22,7 @@ export const GetCardAxios = () =>{
     return function (dispatch){
         axios.get('http://54.180.100.13/api/')
         .then((res)=>{
+            console.log(res)
             dispatch(GetCard(res))
         }).catch((err)=>{
             console.log(err)

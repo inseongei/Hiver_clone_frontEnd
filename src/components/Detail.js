@@ -16,7 +16,6 @@ const Detail = () =>{
     const price_ref = React.useRef(null)
 
     let { boardid } = useParams();  // useParams 어떤 원리로 가져오는걸까
-
     React.useEffect(()=>{
         axios.get('http://54.180.100.13/api/board/' + boardid)
         .then((res)=>{

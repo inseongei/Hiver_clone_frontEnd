@@ -20,6 +20,7 @@ const Login = () =>{
         axios.post('http://54.180.100.13/api/user/signin',LoginData)
         .then((res)=>{
            alert('로그인성공')
+           console.log(res)
            localStorage.setItem('login-token',res.data.token)
            localStorage.setItem('user-name',id_ref.current.value)
            navigate('/')
