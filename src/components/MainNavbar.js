@@ -12,6 +12,7 @@ const MainNavbar = () => {
   const Logout = ()=>{
     localStorage.removeItem('login-token')
     localStorage.removeItem('user-name')
+    localStorage.removeItem('user-nickname')
     navigate('/')
     alert('로그아웃 되셨습니다')
 }
