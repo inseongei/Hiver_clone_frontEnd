@@ -1,5 +1,4 @@
 import React from "react";
-import { GetCardAxios } from "../redux/modules/HiverData";
 import MainEventAd from "./MainEventAd";
 import MainHeader from "./MainHeader";
 import MainNavbar from "./MainNavbar";
@@ -29,12 +28,19 @@ const Detail = () =>{
     console.log(data)  
 
 
+        const orderBaskettwo = () =>{
+            if(price_ref.current.value != 'S' && price_ref.current.value != 'M' && price_ref.current.value != 'L'){
+                alert('옵션에 맞게 입력해주세요 S / M / L')
+            } else{
+                orderBasket()
+            }
+        }
+
+
+
 
         const orderBasket = () =>{
 
-        if(price_ref.current.value != 'M'){
-            alert('옵션에 맞게 입력해주세요 S / M / L')
-        } 
 
             const token = localStorage.getItem("login-token");
             let orderData={
@@ -167,7 +173,7 @@ const Detail = () =>{
             <div className="Modal_BasketList">
             <input type="text" placeholder="수량(1~10개)" ref={count_ref}/>
             <input type="text"placeholder="옵션 ( S / M / L )" ref={price_ref}/>
-            <button className ="modalAdd" onClick={orderBasket}>주문하기</button>
+            <button className ="modalAdd" onClick={orderBaskettwo}>주문하기</button>
         </div>
         </div>
       </Modal>

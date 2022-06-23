@@ -243,3 +243,8 @@ ul, li, dl, dt, dd {
     transform: scale(1.12);
 }
 
+
+
+.review_profile > div > button{
+    margin-top: 20px;
+}

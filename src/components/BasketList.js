@@ -66,6 +66,7 @@ const BasketList = () =>{
     </div>
     
     <div className='Basket_four_box'>
+        <div> <span className="delbtn">X</span></div>
         <span>{Basket.price}원</span>
         <div className='Basket_div_button'><button>주문하기</button></div>
     </div>

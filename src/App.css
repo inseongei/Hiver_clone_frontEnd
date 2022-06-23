@@ -940,3 +940,11 @@ body{
 .detail_review_default{
     margin-left: 30px;
 }
+
+.delbtn{
+    margin-left: 280px;
+    font-size: 20px;
+    position: relative;
+    bottom: 36px;
+    cursor: pointer;
+}
